@@ -50,6 +50,10 @@ const config = {
           'css?modules&importLoaders=1&camelCase&localIdentName='+(!prod?'[local]___':'')+'[hash:base64:6]',
           'postcss'
         ]
+      },
+      {
+        test: /\.cson/,
+        loader: 'cson'
       }
     ]
   },

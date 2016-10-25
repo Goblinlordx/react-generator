@@ -1,9 +1,9 @@
 import React from 'react';
 import {Router, IndexRoute, Route, Redirect, browserHistory} from 'react-router';
 
-import NavShell from 'components/NavShell';
-import Home from 'components/Home';
-import NotFound from 'components/NotFound';
+import NavShell from 'component/NavShell';
+import Home from 'component/Home';
+import NotFound from 'component/NotFound';
 
 const Routing = () => (
   <Router history={browserHistory}>

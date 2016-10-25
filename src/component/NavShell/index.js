@@ -1,29 +1,45 @@
 import React, {Component} from 'react';
 import CSSModules from 'react-css-modules';
 import styles from './styles.css';
-import NavBar from 'components/NavBar';
+import NavBar from 'component/NavBar';
 
 @CSSModules(styles)
 class NavShell extends Component {
-  getNavBarDim = ele => {
-    const nbDim = ele.getBoundingClientRect();
-    this.setState({nbDim});
+  constructor() {
+    super();
+    this.state = {};
+  }
+  getNavBarRef = ele => {
+    this._nb = ele;
   };
   ContentContainer = ({topSpacing}) => (
       <section style={{paddingTop: topSpacing}}>
         {this.props.children}
       </section>
   );
+  setDim() {
+    if (!this._nb) return;
+    const nbDim = this._nb.getBoundingClientRect();
+    if (!this.state.nbDim) {
+      this.setState({nbDim});
+    }
+  }
+  componentDidMount() {
+    this.setDim();
+  }
+  componentWillUpdate() {
+    this.setDim();
+  }
   render() {
     const {children} = this.props;
     const {NavBarContainer, ContentContainer} = this;
     return (
       <div>
-        <div styleName='navbar-container' ref={this.getNavBarDim}>
+        <div styleName='navbar-container' ref={this.getNavBarRef}>
           <NavBar/>
         </div>
         {
-          this.state && this.state.nbDim && (
+          this.state.nbDim && (
             <ContentContainer topSpacing={this.state.nbDim.height}/>
           )
         }

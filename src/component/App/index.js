@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Provider} from 'react-redux';
 import Routing from './routing.js';
-import LocaleProvider from 'components/LocaleProvider';
+import LocaleProvider from 'component/LocaleProvider';
 import store from 'store';
 
 class App extends Component {
