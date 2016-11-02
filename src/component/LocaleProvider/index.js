@@ -1,17 +1,13 @@
 import React, {Component, cloneElement} from 'react';
 import {IntlProvider, addLocaleData} from 'react-intl';
-import en from 'locale/en.cson';
 import {connect} from 'react-redux';
 
-const userLocale = 'en';
-console.log(en);
-
-@connect(({user, localeData}) => ({user, localeData}))
+@connect(({user, localeData}) => ({user, messages: localeData[user && user.locale || 'en']}))
 class LocaleProvider extends Component {
   render() {
-    const {user, localeData} = this.props;
+    const {user, messages} = this.props;
     return (
-      <IntlProvider locale={user.locale||'en'} key={user.locale||'en'} messages={localeData}>
+      <IntlProvider locale={user.locale||'en'} key={user.locale||'en'} messages={messages}>
         {this.props.children}
       </IntlProvider>
     );

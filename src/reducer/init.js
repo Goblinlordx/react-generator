@@ -1,10 +1,11 @@
 import {createReducer} from 'util';
-import {FLUSH, INITIALIZED} from 'action/type'
+import T from 'action/type';
+const {FLUSH, INITIALIZED} = T;
 
 const init = createReducer({
   [FLUSH]: state => state,
   [INITIALIZED]: () => ({ed: true})
-},{
+}, {
   ed: false,
 });
 

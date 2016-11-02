@@ -11,7 +11,7 @@ class Home extends Component {
       <div>
         <h1>Home Page</h1>
         <FormattedMessage
-          id='test'
+          id='example'
         />
       </div>
     );

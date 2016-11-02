@@ -1,5 +1,6 @@
 import {createReducer} from 'util';
-import {SET_USER} from 'action/type';
+import T from 'action/type';
+const {SET_USER} = T;
 
 const user = createReducer({
   [SET_USER]: (_, user) => user,

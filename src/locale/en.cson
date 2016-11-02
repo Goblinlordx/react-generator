@@ -1,5 +1,1 @@
-auth:
-  login: 'Login'
-  password: 'Password'
-
-test: 'Test'
+example: 'Example translated text'

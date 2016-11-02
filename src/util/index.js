@@ -1,4 +1,5 @@
-import {FLUSH} from 'action/type';
+import T from 'action/type';
+const {FLUSH} = T;
 
 const createReducer = (addReactions, defState = {}) => {
   const reactions = {

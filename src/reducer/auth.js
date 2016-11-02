@@ -1,5 +1,6 @@
 import {createReducer} from 'util';
-import {AUTH_START, AUTH_SUCCESS, AUTH_FAIL, AUTH_RESET_ERROR} from 'action/type';
+import T from 'action/type';
+const {AUTH_START, AUTH_SUCCESS, AUTH_FAIL, AUTH_RESET_ERROR} = T;
 
 const auth = createReducer({
   [AUTH_START]: state => ({
@@ -24,6 +25,11 @@ const auth = createReducer({
     ...state,
     error: null,
   }),
+}, {
+  ing: false,
+  ed: false,
+  data: null,
+  error: null,
 });
 
 export default auth;

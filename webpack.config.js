@@ -12,6 +12,9 @@ const config = {
     path: 'build',
     filename: 'bundle.[hash].js'
   },
+  devServer: {
+    historyApiFallback: true
+  },
   module: {
     loaders: [
       {
