@@ -1,3 +1,4 @@
+import 'lib/firebase';
 import React, {Component} from 'react';
 import {Provider} from 'react-redux';
 import Routing from './routing.js';
