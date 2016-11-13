@@ -4,6 +4,7 @@ import Routing from './routing.js';
 import LocaleProvider from 'component/LocaleProvider';
 import store from 'store';
 import 'sanitize.css/sanitize.css';
+import 'style/global.css';
 
 const App = () => (
   <Provider store={store}>

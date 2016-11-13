@@ -14,17 +14,11 @@ class NavShell extends Component {
     this.state = {};
   }
   getNavBarRef = ele => {
-    this._nb = ele;
+    setTimeout(() => this._nb = ele)
   };
   ContentContainer = ({topSpacing}) => (
       <section style={{paddingTop: topSpacing}}>
-        <RCTG
-          transitionName="fade"
-          transitionEnterTimeout={400}
-          transitionLeaveTimeout={400}
-        >
-          {this.props.init.ed? this.props.children:null}
-        </RCTG>
+        {this.props.children}
       </section>
   );
   setDim() {
@@ -54,11 +48,18 @@ class NavShell extends Component {
             {init.ed && <NavBar/> || null}
           </RCTG>
         </div>
-        {
-          this.state.nbDim && (
-            <ContentContainer topSpacing={this.state.nbDim.height}/>
-          )
-        }
+
+        <RCTG
+          transitionName="fade"
+          transitionEnterTimeout={400}
+          transitionLeaveTimeout={400}
+        >
+          {
+            this.state.nbDim && (
+              <ContentContainer topSpacing={this.state.nbDim.height}/>
+            )
+          }
+        </RCTG>
       </div>
     )
   }

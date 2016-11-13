@@ -2,13 +2,40 @@
 
 .nav {
   background-color: $primary;
+  display: table;
+  width: 100%;
+  >ul.right {
+    text-align: right;
+  }
   >ul {
+    display: table-cell;
     margin: 0;
     padding: 0;
     >li {
       display: inline-block;
+      white-space: nowrap;
       + li {
-        margin-left: 15px;
+      }
+      >a:active,
+      >a:focus,
+      >a:visited,
+      >a {
+        display: inline-block;
+        line-height: 40px;
+        padding: 0 16px;
+        text-align: center;
+        min-width: 88px;
+        color: $textIcon;
+        transition: all 0.3s ease;
+        &.active {
+          background-color: rgba(153,153,153,0.4);
+          &:hover {
+            background-color: rgba(153,153,153,0.12);
+          }
+        }
+        &:hover {
+          background-color: rgba(0,0,0,0.12);
+        }
       }
     }
   }

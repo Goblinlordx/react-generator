@@ -1,0 +1,6 @@
+@import 'style/colors.css';
+
+html * {
+  font-family: Roboto, Arial;
+  color: $primaryText;
+}
