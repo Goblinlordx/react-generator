@@ -16,9 +16,7 @@
       white-space: nowrap;
       + li {
       }
-      >a:active,
-      >a:focus,
-      >a:visited,
+      >span,
       >a {
         display: inline-block;
         line-height: 40px;
@@ -26,6 +24,12 @@
         text-align: center;
         min-width: 88px;
         color: $textIcon;
+        text-decoration: none;
+      }
+      >a:active,
+      >a:focus,
+      >a:visited,
+      >a {
         transition: all 0.3s ease;
         &.active {
           background-color: rgba(153,153,153,0.4);

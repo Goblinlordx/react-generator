@@ -4,12 +4,11 @@ import {connect} from 'react-redux';
 import CSSModules from 'react-css-modules';
 import styles from './styles.css';
 
-@connect(({user})=>({user}))
+@connect(({user})=>({user}), null, null, {pure:false})
 @CSSModules(styles)
 class NavBar extends Component {
   render() {
     const {user} = this.props;
-    console.log('renderCalled');
     return (
       <nav styleName='nav'>
         <ul>
@@ -20,7 +19,10 @@ class NavBar extends Component {
         </ul>
         <ul styleName='right'>
           {user &&
-            <li><Link to='/404test'>{user.displayName}</Link></li>
+            <li><span>{user.displayName}</span></li>
+          }
+          {user &&
+            <li><Link to='/logout'>Logout</Link></li>
           }
         </ul>
       </nav>
