@@ -1,14 +1,18 @@
 import T from './type';
-const {AUTH_SUCCESS, FLUSH} = T;
+const {LOGIN, LOGOUT} = T;
 
-export function login() {
+export function login(username, password) {
   return {
-    type: T.AUTH_SUCCESS
+    type: LOGIN,
+    payload: {
+      username,
+      password,
+    },
   };
 }
 
 export function logout() {
   return {
-    type: T.FLUSH
+    type: LOGOUT,
   };
 }

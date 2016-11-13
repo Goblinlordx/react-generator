@@ -3,6 +3,7 @@ import keyMirror from 'key-mirror';
 const types = keyMirror({
   FLUSH: null,
   LOGIN: null,
+  LOGOUT: null,
   INITIALIZED: null,
   AUTH_START: null,
   AUTH_SUCCESS: null,

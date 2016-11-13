@@ -1,3 +1,10 @@
+// WSL (Windows Subsystem Linux) Bug fix
+try {
+    require('os').networkInterfaces();
+} catch (e) {
+    require('os').networkInterfaces = () => ({});
+}
+
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const prod = process.argv.indexOf('-p') !== -1;
@@ -9,11 +16,13 @@ const cssnext = require('postcss-cssnext');
 const config = {
   entry: './src/index.js',
   output: {
+    publicPath: '/',
     path: 'build',
     filename: 'bundle.[hash].js'
   },
   devServer: {
-    historyApiFallback: true
+    historyApiFallback: true,
+    compress: true
   },
   module: {
     loaders: [
@@ -42,7 +51,7 @@ const config = {
         include: /node_modules/,
         loaders: [
           'style',
-          'css'
+          'css?'+(!prod?'':'minimize')
         ]
       },
       {
@@ -50,7 +59,7 @@ const config = {
         exclude: /node_modules/,
         loaders: [
           'style?sourceMap&singleton',
-          'css?modules&importLoaders=1&camelCase&localIdentName='+(!prod?'[local]___':'')+'[hash:base64:6]',
+          'css?'+(!prod?'':'minimize&')+'modules&importLoaders=1&camelCase&localIdentName='+(!prod?'[local]___':'')+'[hash:base64:6]',
           'postcss'
         ]
       },

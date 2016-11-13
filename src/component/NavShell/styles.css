@@ -1,3 +1,5 @@
+@import 'style/transitions.css';
+
 .navbar-container {
   position: absolute;
   top: 0;

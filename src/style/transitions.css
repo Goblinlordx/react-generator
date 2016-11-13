@@ -1,0 +1,18 @@
+:global .fade {
+  &-enter {
+    opacity: 0.01;
+    transition: opacity 0.4s ease;
+    &.fade-enter-active {
+      opacity: 1;
+    }
+  }
+  &-leave {
+    opacity: 1;
+    transition: opacity 0.4s ease;
+    &.fade-leave-active {
+      opacity: 0.01;
+    }
+  }
+}
+
+
