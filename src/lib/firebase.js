@@ -9,7 +9,6 @@ firebase.initializeApp(config);
 
 firebase.auth()
   .onAuthStateChanged(user => {
-    const {init} = store.getState();
     if (user) {
       store.dispatch({
         type: AUTH_SUCCESS,
@@ -23,6 +22,7 @@ firebase.auth()
         type: FLUSH,
       });
     }
+    const {init} = store.getState();
     if (!init.ed) {
       store.dispatch({
         type: INITIALIZED,

@@ -5,6 +5,7 @@ import store from 'store';
 import AuthedRoute from 'component/AuthedRoute';
 import NavShell from 'component/NavShell';
 import Login from 'component/Login';
+import Logout from 'component/Logout';
 import Test from 'component/Test';
 import Home from 'component/Home';
 import NotFound from 'component/NotFound';
@@ -18,6 +19,7 @@ const Routing = () => (
     <Route path='/' component={NavShell}>
       <Route component={BasicAuth}>
         <Route path='test' component={Test}/>
+        <Route path='logout' component={Logout}/>
       </Route>
       <Route component={BasicUnauth}>
         <Route path='login' component={Login}/>

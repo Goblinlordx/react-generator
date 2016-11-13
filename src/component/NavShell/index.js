@@ -6,6 +6,12 @@ import CSSModules from 'react-css-modules';
 import styles from './styles.css';
 import NavBar from 'component/NavBar';
 
+const ContentContainer = ({topSpacing, children}) => (
+  <section style={{paddingTop: topSpacing}}>
+    {children}
+  </section>
+);
+
 @connect(({init}) => ({init}))
 @CSSModules(styles)
 class NavShell extends Component {
@@ -14,18 +20,13 @@ class NavShell extends Component {
     this.state = {};
   }
   getNavBarRef = ele => {
-    setTimeout(() => this._nb = ele)
+   this.ele = ele;
   };
-  ContentContainer = ({topSpacing}) => (
-      <section style={{paddingTop: topSpacing}}>
-        {this.props.children}
-      </section>
-  );
   setDim() {
-    if (!this._nb) return;
-    const nbDim = this._nb.getBoundingClientRect();
+    if (!this.ele) return;
+    const nbDim = this.ele.getBoundingClientRect();
     if (!this.state.nbDim) {
-      this.setState({nbDim});
+      setTimeout(_=>this.setState({nbDim})); // TODO: Something better here!?
     }
   }
   componentDidMount() {
@@ -36,7 +37,7 @@ class NavShell extends Component {
   }
   render() {
     const {children, init} = this.props;
-    const {NavBarContainer, ContentContainer} = this;
+    const {nbDim} = this.state;
     return (
       <div>
         <div styleName='navbar-container' ref={this.getNavBarRef}>
@@ -55,8 +56,9 @@ class NavShell extends Component {
           transitionLeaveTimeout={400}
         >
           {
+            init.ed &&
             this.state.nbDim && (
-              <ContentContainer topSpacing={this.state.nbDim.height}/>
+              <ContentContainer topSpacing={this.state.nbDim.height} children={children}/>
             )
           }
         </RCTG>
